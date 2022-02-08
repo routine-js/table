@@ -20,9 +20,9 @@ class MyService extends AbsTableService<Row, Params> {
   }> {
     const res = {
       data: [{ name: 'aloha' }],
-      current: 1,
-      pageSize: 1,
-      total: 1,
+      current: params.current,
+      pageSize: 10,
+      total: 100,
     };
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -32,6 +32,22 @@ class MyService extends AbsTableService<Row, Params> {
   }
 }
 
+class ErrorService extends AbsTableService<Row, Params> {
+  fetchTable(
+    params: Partial<Params> & { current: number; pageSize: number },
+  ): Promise<{
+    data: Row[];
+    current: number;
+    pageSize: number;
+    total: number;
+  }> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(Error('some error'));
+      }, 1000);
+    });
+  }
+}
 describe('table', () => {
   // 初始数据
   it('init', () => {
@@ -132,12 +148,40 @@ describe('table', () => {
     expect(count).toBe(2);
     expect(presenter.state.loading).toBe(true);
 
-    await waitFor(() => presenter.state.table.pagination.total === 1);
+    await waitFor(() => presenter.state.table.pagination.total === 100);
     expect(count).toBe(4);
     expect(presenter.state.loading).toBe(false);
     expect(presenter.state.table.data[0].name).toBeDefined();
   });
 
+  it('getTable, error service', async () => {
+    let count = 0;
+    const { result, waitFor, waitForNextUpdate } = renderHook(() => {
+      count += 1;
+      return usePresenter<TablePresenter<Row, Params>>(TablePresenter, {
+        registry: [{ token: TableServiceToken, useClass: ErrorService }],
+      });
+    });
+    const { presenter } = result.current;
+
+    expect(count).toBe(1);
+    expect(presenter.state.loading).toBe(false);
+    expect(presenter.state.table.data).toEqual([]);
+    expect(presenter.state.table.pagination.current).toBe(1);
+    expect(presenter.state.table.pagination.pageSize).toBe(10);
+    expect(presenter.state.table.pagination.total).toBe(0);
+    expect(presenter.state.table.params).toEqual({});
+
+    presenter.getTable().catch((e) => {
+      expect(e.message).toBe('some error');
+    });
+
+    await waitFor(() => presenter.state.loading === true);
+    expect(count).toBe(2);
+    expect(presenter.state.loading).toBe(true);
+
+    await waitForNextUpdate();
+  });
   it('updateTablePagination', async () => {
     let count = 0;
     const { result, waitForNextUpdate } = renderHook(() => {
@@ -177,6 +221,14 @@ describe('table', () => {
     expect(presenter.state.table.pagination.total).toBe(30);
     expect(presenter.state.table.pagination.pageSize).toBe(30);
     expect(presenter.state.table.pagination.current).toBe(30);
+
+    // 请求固定返回pageSize为10
+    act(() => {
+      presenter.updateTablePagination({ pageSize: 20 });
+      presenter.getTable();
+    });
+    await waitForNextUpdate();
+    expect(presenter.state.table.pagination.pageSize).toBe(10);
   });
 
   it('updateTableParams', async () => {

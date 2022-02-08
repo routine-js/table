@@ -27,7 +27,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   externals: {
-    '@lujs/mvp': '@lujs/mvp',
+    '@clean-js/presenter': '@clean-js/presenter',
   },
 
   output: {

@@ -63,7 +63,7 @@ export class TablePresenter<
       }
     });
     this.showLoading();
-    this.service
+    return this.service
       .fetchTable({
         current: this.state.table.pagination.current,
         pageSize: this.state.table.pagination.pageSize,
@@ -76,6 +76,7 @@ export class TablePresenter<
           s.table.pagination.total = res.total;
           s.table.data = res.data;
         });
+        return res;
       })
       .finally(() => {
         this.hideLoading();
