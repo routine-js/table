@@ -6,8 +6,9 @@ module.exports = {
   entry: './src/index.ts',
   // plugins: [new BundleAnalyzerPlugin()],
   mode: 'production',
+  devtool: 'source-map',
   optimization: {
-    minimize: false,
+    minimize: true,
     minimizer: [
       new TerserPlugin({
         extractComments: false,
