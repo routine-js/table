@@ -55,8 +55,7 @@
     "webpack-cli": "^4.9.1",
     "yorkie": "^2.0.0"
   },
-  "dependencies": {
-    "reflect-metadata": "^0.1.13",
+  "peerDependencies": {
     "@clean-js/presenter": "^0.0.5"
   }
 }
