@@ -1,5 +1,4 @@
 import { inject, Presenter, injectable } from '@clean-js/presenter';
-import 'reflect-metadata';
 
 export abstract class AbsTableService<Row = any, Params = Record<any, any>> {
   abstract fetchTable(
