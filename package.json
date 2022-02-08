@@ -21,7 +21,7 @@
     "@babel/plugin-proposal-decorators": "^7.16.7",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
-    "@clean-js/react-presenter": "^0.0.4",
+    "@clean-js/react-presenter": "^0.0.5",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/clone": "^2.1.1",
     "@types/jest": "^27.0.3",
@@ -57,6 +57,6 @@
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13",
-    "@clean-js/presenter": "^0.0.4"
+    "@clean-js/presenter": "^0.0.5"
   }
 }

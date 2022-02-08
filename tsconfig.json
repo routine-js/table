@@ -12,7 +12,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "importHelpers": true,
+    // "importHelpers": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "sourceMap": true,

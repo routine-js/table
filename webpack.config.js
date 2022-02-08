@@ -7,7 +7,7 @@ module.exports = {
   // plugins: [new BundleAnalyzerPlugin()],
   mode: 'production',
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         extractComments: false,
