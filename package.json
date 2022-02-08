@@ -55,7 +55,7 @@
     "yorkie": "^2.0.0"
   },
   "dependencies": {
-    "@lujs/mvp": "^0.2.4",
-    "@lujs/react-mvp-adaptor": "^0.3.2"
+    "@clean-js/presenter": "^0.0.4",
+    "@clean-js/react-presenter": "^0.0.4"
   }
 }

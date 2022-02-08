@@ -1,57 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1643348999161" clover="3.2.0">
-  <project timestamp="1643348999161" name="All files">
-    <metrics statements="42" coveredstatements="40" conditionals="8" coveredconditionals="5" methods="21" coveredmethods="20" elements="71" coveredelements="65" complexity="0" loc="42" ncloc="42" packages="1" files="3" classes="3"/>
-    <file name="index.ts" path="/Users/lujunsheng/myOwnX/routine/table/src/index.ts">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="2" count="2" type="stmt"/>
-      <line num="3" count="21" type="stmt"/>
-      <line num="4" count="21" type="stmt"/>
-    </file>
-    <file name="table.model.ts" path="/Users/lujunsheng/myOwnX/routine/table/src/table.model.ts">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="18" count="1" type="stmt"/>
-      <line num="20" count="20" type="stmt"/>
-      <line num="21" count="20" type="stmt"/>
-    </file>
-    <file name="table.presenter.ts" path="/Users/lujunsheng/myOwnX/routine/table/src/table.presenter.ts">
-      <metrics statements="34" coveredstatements="32" conditionals="8" coveredconditionals="5" methods="17" coveredmethods="16"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="18" count="20" type="stmt"/>
-      <line num="19" count="20" type="stmt"/>
-      <line num="21" count="20" type="stmt"/>
-      <line num="25" count="3" type="stmt"/>
-      <line num="26" count="3" type="stmt"/>
-      <line num="31" count="2" type="stmt"/>
-      <line num="32" count="2" type="stmt"/>
-      <line num="37" count="1" type="stmt"/>
-      <line num="38" count="1" type="cond" truecount="4" falsecount="2"/>
-      <line num="39" count="0" type="cond" truecount="0" falsecount="1"/>
-      <line num="40" count="0" type="stmt"/>
-      <line num="43" count="1" type="stmt"/>
-      <line num="44" count="1" type="stmt"/>
-      <line num="51" count="1" type="stmt"/>
-      <line num="52" count="1" type="stmt"/>
-      <line num="53" count="1" type="stmt"/>
-      <line num="54" count="1" type="stmt"/>
-      <line num="55" count="1" type="stmt"/>
-      <line num="59" count="1" type="stmt"/>
-      <line num="64" count="4" type="stmt"/>
-      <line num="65" count="4" type="stmt"/>
-      <line num="73" count="2" type="stmt"/>
-      <line num="74" count="2" type="stmt"/>
-      <line num="75" count="2" type="cond" truecount="1" falsecount="0"/>
-      <line num="76" count="2" type="stmt"/>
-      <line num="82" count="2" type="stmt"/>
-      <line num="83" count="2" type="stmt"/>
-      <line num="91" count="1" type="stmt"/>
-      <line num="92" count="1" type="stmt"/>
-    </file>
+<coverage generated="1644248013015" clover="3.2.0">
+  <project timestamp="1644248013015" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>

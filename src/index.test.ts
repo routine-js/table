@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { renderHook, act } from '@testing-library/react-hooks';
-import { usePresenter } from '@lujs/react-mvp-adaptor';
+import { usePresenter } from '@clean-js/react-presenter';
 import { TablePresenter, AbsTableService, TableServiceToken } from './index';
 
 interface Row {

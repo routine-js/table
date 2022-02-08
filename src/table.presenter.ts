@@ -1,5 +1,4 @@
-import { inject, Presenter, injectable } from '@lujs/mvp';
-import { IPagination, TableModel } from './table.model';
+import { inject, Presenter, injectable } from '@clean-js/presenter';
 
 export abstract class AbsTableService<Row = any, Params = Record<any, any>> {
   abstract fetchTable(
@@ -7,35 +6,58 @@ export abstract class AbsTableService<Row = any, Params = Record<any, any>> {
   ): Promise<{ data: Row[]; current: number; pageSize: number; total: number }>;
 }
 
-export const TableServiceToken = 'TableServiceToken';
+export const TableServiceToken = Symbol('TableServiceToken');
+
+// 三个固定参数
+export interface IPagination {
+  current: number;
+  pageSize: number;
+  total: number;
+}
+interface IViewState<Row, OtherParams> {
+  loading: boolean;
+  // 请求表格的数据
+  table: {
+    data: Row[];
+    params: OtherParams; // 额外参数
+    pagination: IPagination;
+  };
+}
 
 @injectable()
 export class TablePresenter<
   Row = any,
   Params = Record<any, any>,
-> extends Presenter<TableModel<Row, Partial<Params>>> {
+> extends Presenter<IViewState<Row, Params>> {
   constructor(
-    protected model: TableModel<Row, Partial<Params>>,
     @inject(TableServiceToken) private service: AbsTableService<Row, Params>,
   ) {
     super();
+    this.state = {
+      loading: false,
+      table: {
+        params: {} as Record<any, any>,
+        pagination: { current: 1, pageSize: 10, total: 0 },
+        data: [],
+      },
+    };
   }
 
   showLoading() {
-    this.model.setState((s) => {
+    this.setState((s) => {
       s.loading = true;
     });
   }
 
   hideLoading() {
-    this.model.setState((s) => {
+    this.setState((s) => {
       s.loading = false;
     });
   }
 
   getTable() {
     const params: Partial<Params> = {};
-    Object.entries(this.model.state.table?.params || {}).map(([k, v]) => {
+    Object.entries(this.state.table?.params || {}).map(([k, v]) => {
       if (v !== undefined) {
         Object.assign(params, { [k]: v });
       }
@@ -89,7 +111,7 @@ export class TablePresenter<
 
   resetTableParams() {
     this.setState((s) => {
-      s.table.params = {};
+      s.table.params = {} as Record<any, any>;
     });
   }
 }
