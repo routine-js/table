@@ -1,6 +1,5 @@
-import { inject, Presenter, injectable, container } from '@clean-js/presenter';
+import { inject, Presenter, injectable } from '@clean-js/presenter';
 
-container.debug('lujs');
 export abstract class AbsTableService<Row = any, Params = Record<any, any>> {
   abstract fetchTable(
     params: Partial<Params> & { current: number; pageSize: number },
