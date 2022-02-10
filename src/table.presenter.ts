@@ -42,7 +42,6 @@ export class TablePresenter<
         data: [],
       },
     };
-    console.log(this.service);
   }
 
   showLoading() {
