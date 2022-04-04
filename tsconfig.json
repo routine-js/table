@@ -9,7 +9,7 @@
     "stripInternal": true,
     "removeComments": true,
     "target": "ES6",
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     // "importHelpers": true,
