@@ -28,7 +28,8 @@ export class TablePresenter<
   Params = Record<any, any>,
 > extends Presenter<IViewState<Row, Params>> {
   constructor(
-    @inject(TableServiceToken) private service: AbsTableService<Row, Params>,
+    @inject(TableServiceToken as unknown as string)
+    private service: AbsTableService<Row, Params>,
   ) {
     super();
     this.state = {

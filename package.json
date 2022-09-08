@@ -13,8 +13,8 @@
   ],
   "scripts": {
     "dev": "ts-node ./src/index.ts",
-    "build1": "father-build",
-    "build": "webpack --env production ",
+    "build": "father-build",
+    "build1": "webpack --env production ",
     "start": "webpack --watch ",
     "test": "jest --watchAll ",
     "prepublishOnly": "npm run build && np --no-cleanup --yolo --no-publish"
