@@ -60,7 +60,7 @@
     "yorkie": "^2.0.0",
     "@types/estree": "^0.0.51"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@clean-js/react-presenter": "^0.1.1",
     "@clean-js/presenter": "^0.1.1"
   }
