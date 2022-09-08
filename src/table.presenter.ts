@@ -17,11 +17,9 @@ export interface IPagination {
 interface IViewState<Row, OtherParams> {
   loading: boolean;
   // 请求表格的数据
-  table: {
-    data: Row[];
-    params: OtherParams; // 额外参数
-    pagination: IPagination;
-  };
+  data: Row[];
+  params: OtherParams; // 额外参数
+  pagination: IPagination;
 }
 
 @injectable()
@@ -35,11 +33,9 @@ export class TablePresenter<
     super();
     this.state = {
       loading: false,
-      table: {
-        params: {} as Record<any, any>,
-        pagination: { current: 1, pageSize: 10, total: 0 },
-        data: [],
-      },
+      params: {} as Record<any, any>,
+      pagination: { current: 1, pageSize: 10, total: 0 },
+      data: [],
     };
   }
 
@@ -57,7 +53,7 @@ export class TablePresenter<
 
   getTable() {
     const params: Partial<Params> = {};
-    Object.entries(this.state.table?.params || {}).map(([k, v]) => {
+    Object.entries(this.state.params || {}).forEach(([k, v]) => {
       if (v !== undefined) {
         Object.assign(params, { [k]: v });
       }
@@ -65,16 +61,16 @@ export class TablePresenter<
     this.showLoading();
     return this.service
       .fetchTable({
-        current: this.state.table.pagination.current,
-        pageSize: this.state.table.pagination.pageSize,
+        current: this.state.pagination.current,
+        pageSize: this.state.pagination.pageSize,
         ...params,
       })
       .then((res) => {
         this.setState((s) => {
-          s.table.pagination.current = res.current;
-          s.table.pagination.pageSize = res.pageSize;
-          s.table.pagination.total = res.total;
-          s.table.data = res.data;
+          s.pagination.current = res.current;
+          s.pagination.pageSize = res.pageSize;
+          s.pagination.total = res.total;
+          s.data = res.data;
         });
         return res;
       })
@@ -85,8 +81,8 @@ export class TablePresenter<
 
   updateTablePagination(pagination: Partial<IPagination>) {
     this.setState((s) => {
-      s.table.pagination = {
-        ...s.table.pagination,
+      s.pagination = {
+        ...s.pagination,
         ...pagination,
       };
     });
@@ -103,8 +99,8 @@ export class TablePresenter<
     });
 
     this.setState((s) => {
-      s.table.params = {
-        ...s.table.params,
+      s.params = {
+        ...s.params,
         ...d,
       };
     });
@@ -112,7 +108,7 @@ export class TablePresenter<
 
   resetTableParams() {
     this.setState((s) => {
-      s.table.params = {} as Record<any, any>;
+      s.params = {} as Record<any, any>;
     });
   }
 }

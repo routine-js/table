@@ -75,8 +75,7 @@ it('test react render', (done) => {
   expect(count).toBe(2);
 
   setTimeout(() => {
-    console.log(result.current.presenter);
-    expect(result.current.state.table.data.length).toBe(1);
+    expect(result.current.state.data.length).toBe(1);
     done();
   }, 1000);
 });
